@@ -1,0 +1,78 @@
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 40rem;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 1.5em 0 1em;
+}
+
+p
+{ margin-bottom: 0.8em; }
+
+ol
+{ list-style-type: none; }
+
+main
+{ counter-reset: chapter -1; }
+main > section
+{ counter-increment: chapter; }
+section > h1:before
+{ content: "第" counter(chapter, cjk-ideographic) "章　"; }
+section#intro > h1:before
+{ content: ""; }
+
+main > section
+{ counter-reset: section; }
+main > section > section
+{ counter-increment: section; }
+main > section > section > h1:before
+{ content: "第" counter(section, cjk-ideographic) "节　"; }
+
+main
+{ counter-reset: item; }
+section > ol > li {
+  counter-increment: item; 
+  position: relative;
+  margin-bottom: 1.2em;
+}
+section > ol > li:before { 
+  content: "第" counter(item, cjk-ideographic) "条　";
+  font-weight: bold;
+  display: inline-block;
+  width: 8em;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: -8em;
+}
+
+li > ol {
+  counter-reset: in-par-item;
+  margin-top: -0.8em;
+}
+li > ol > li {
+  counter-increment: in-par-item;
+  position: relative;
+}
+li > ol > li:before {
+  content: "（" counter(in-par-item, cjk-ideographic) "）";
+  display: inline-block;
+  width: 5em;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: -5em;
+}
