@@ -44,11 +44,11 @@ main > section > section > h1:before
 main
 { counter-reset: item; }
 section > ol > li {
-  counter-increment: item; 
+  counter-increment: item;
   position: relative;
   margin-bottom: 1.2em;
 }
-section > ol > li:before { 
+section > ol > li:before {
   content: "第" counter(item, cjk-ideographic) "条　";
   font-weight: bold;
   display: inline-block;
